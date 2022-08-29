@@ -14,4 +14,4 @@
       dest: "{{ copy_to }}"
 
   - name: start service
-    command: "nginx"
+    command: "brew services restart nginx"
