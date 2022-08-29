@@ -1,0 +1,17 @@
+---
+- name: install and ionfigure nginx.
+  hosts: localh
+  connection: local
+  tasks:
+  - name: install nginx
+    community.general.homebrew:
+      name: nginx
+      state: present
+
+  - name: configure homepage with custom html
+    ansible.builtin.copy:
+      src: "{{ index_file }}"
+      dest: "{{ copy_to }}"
+
+  - name: start service
+    command: "nginx"
